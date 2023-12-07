@@ -19,6 +19,22 @@ const treatment = () => {
         },
     ];
 
+    const tableDesign = [
+        {
+            colName: "Title",
+            colKay: "blogTitle"
+        },
+        {
+            colName: "Date",
+            colKay: "date"
+        },
+        {
+            colName: "Image Name",
+            colKay: "image"
+        },
+    ];
+
+
     return (
         <AdminLayout>
 
@@ -26,14 +42,12 @@ const treatment = () => {
 
                 <div>
                     <CustomAddButton {...{ title: 'Add Post' }} />
-
                 </div>
 
                 {/* table */}
 
                 <div className='bg-white p-2 my-3'>
-                    <CustomTable data={data} />
-
+                    <CustomTable data={data} tableDesign={tableDesign} title={"Fish Treatment"} />
                 </div>
             </div>
         </AdminLayout>

@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from 'react';
-import CustomDeleteButton from './customDeleteButton';
+import CustomDeleteButton from './CustomDeleteButton';
 
 const CustomTable = ({ title = "Title", data = [], tableDesign = [{ colName: "Title", colKay: "blogTitle" }] }) => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -38,7 +38,7 @@ const CustomTable = ({ title = "Title", data = [], tableDesign = [{ colName: "Ti
                                         </td>
                                     ))}
                                     <td className="p-3 text-right">
-                                        <CustomDeleteButton />
+                                        <CustomDeleteButton title='Remove' id={"id"} modelName={"modelName"} />
                                     </td>
                                 </tr>
                             ))}
