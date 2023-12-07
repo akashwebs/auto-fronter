@@ -5,3 +5,53 @@
 
 /* background-image: linear-gradient(250deg, #B4FFB3 0%, #193117 94%); */
 /* background-image: linear-gradient(130deg, #37C375 0%, #8BB29C 100%); */
+
+
+/* ------------here auto custom table pagination -------------------- */
+/* Pagination Styles */
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pagination li {
+  margin-right: 8px;
+}
+
+.pagination button {
+  display: inline-block;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  background-color: #f0f0f0;
+}
+
+.pagination .active button {
+  background-color: #3498db;
+  color: #fff;
+  border-color: #3498db;
+  cursor: default;
+}
+
+/* Responsive Styles (optional) */
+@media (max-width: 600px) {
+  .pagination {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pagination li {
+    margin-bottom: 8px;
+    margin-right: 0;
+  }
+}
+
+/* ------------here auto custom table pagination -------------------- */
