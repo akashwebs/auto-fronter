@@ -25,6 +25,7 @@
     "react-modal": "^3.16.1",
     "react-modern-drawer": "^1.2.2",
     "react-player": "^2.13.0",
+    "react-quill": "^2.0.0",
     "react-select": "^5.8.0",
     "sweetalert": "^2.1.2",
     "swiper": "^11.0.5"
