@@ -5,9 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Icon } from "@mui/material";
-
-
+import { Icon } from "@iconify/react";
 
 const Sidebar_animation = {
   open: {
@@ -38,8 +36,6 @@ const text_hedin = {
     },
   },
 };
-
-
 
 const AdminSidebar = () => {
   const [open, setOpen] = useState(true);
@@ -99,7 +95,10 @@ const AdminSidebar = () => {
               href={"/admin"}
               className=" flex items-center py-3 relative group  text-slate-500 font-semibold px-8 gap-6 hover:bg-gray-200"
             >
-              <Icon icon="material-symbols:dashboard" className={" min-w-max text-[20px]"} />
+              <Icon
+                icon="material-symbols:dashboard"
+                className={" min-w-max text-[20px]"}
+              />
               <span
                 className={`${
                   !open
@@ -117,7 +116,10 @@ const AdminSidebar = () => {
               href={"/admin/user"}
               className=" flex items-center py-3 relative group  text-slate-500 font-semibold px-8 gap-6 hover:bg-gray-200"
             >
-              <Icon icon="material-symbols:dashboard" className={" min-w-max text-[20px]"} />
+              <Icon
+                icon="material-symbols:dashboard"
+                className={" min-w-max text-[20px] text-gray-500"}
+              />
               <span
                 className={`${
                   !open
@@ -134,7 +136,27 @@ const AdminSidebar = () => {
               <p className=" text-sm font-bold text-gray-500">MANAGEMENT</p>
             </div>
           )}
-
+          <li>
+            <Link
+              style={isActive("/admin/product") ? activeStyle : undefined}
+              href={"/admin/product"}
+              className=" flex items-center py-3 relative group  text-slate-500 font-semibold px-8 gap-6 hover:bg-gray-200"
+            >
+              <Icon
+                icon="fa6-brands:product-hunt"
+                className={" min-w-max text-[20px] "}
+              />
+              <span
+                className={`${
+                  !open
+                    ? "absolute top-[3px] hidden group-hover:flex  bg-gray-200 rounded-md p-2 left-[100px]"
+                    : ""
+                }`}
+              >
+                Product
+              </span>
+            </Link>
+          </li>
         </ul>
       </div>
     </motion.div>
