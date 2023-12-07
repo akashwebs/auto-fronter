@@ -2,10 +2,11 @@
 
 import React, { useState } from 'react';
 import CustomDeleteButton from './CustomDeleteButton';
+import Image from 'next/image';
 
-const CustomTable = ({ title = "Title", data = [], tableDesign = [{ colName: "Title", colKay: "blogTitle" }] }) => {
+const CustomTable = ({ refetch, modelName, title = "Title", data = [], tableDesign = [{ colName: "Title", colKay: "blogTitle" }] }) => {
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 1; // Set the number of items per page
+    const itemsPerPage = 10; // Set the number of items per page
 
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -33,12 +34,15 @@ const CustomTable = ({ title = "Title", data = [], tableDesign = [{ colName: "Ti
                             {currentItems.map((d, index) => (
                                 <tr key={index} className="border-b border-opacity-20">
                                     {tableDesign.map((col, colIndex) => (
-                                        <td key={colIndex} className="p-3">
-                                            <p>{d[col.colKay]}</p>
-                                        </td>
+                                        <>
+                                            {col.type === 'image' ? <Image className=' rounded-xl w-10 h-10 object-fill' width={70} height={70} src={d[col.colKay]} /> :
+                                                <td key={colIndex} className="p-3">
+                                                    <p>{d[col.colKay]}</p>
+                                                </td>}
+                                        </>
                                     ))}
                                     <td className="p-3 text-right">
-                                        <CustomDeleteButton title='Remove' id={"id"} modelName={"modelName"} />
+                                        <CustomDeleteButton title='Remove' id={d._id} modelName={modelName} refetch={refetch} />
                                     </td>
                                 </tr>
                             ))}

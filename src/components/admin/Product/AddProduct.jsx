@@ -1,6 +1,6 @@
 "use client";
 
-import { url } from "@/config/config";
+import { server_url } from "@/config/config";
 import CustomDrawer from "@/src/ulits/CustomDrawer";
 import dynamic from "next/dynamic";
 import Image from "next/image";
@@ -13,7 +13,7 @@ import swal from "sweetalert";
 const AddProduct = ({ isOpen, setIsOpen }) => {
   const [imageUrl, setImageUrl] = useState();
   const [richText, setValueOfRichText] = useState("");
-  const [loading,setLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
   const {
     register,
     handleSubmit,
@@ -40,12 +40,12 @@ const AddProduct = ({ isOpen, setIsOpen }) => {
   const addServices = (data) => {
     setLoading(true)
     const info = {
-        name: data.name,
-        banglaName:data.banglaName,
-        price:data.price,
-        description: richText,
-        quantity:data.quantity,
-        imgUrls: imageUrl,
+      name: data.name,
+      banglaName: data.banglaName,
+      price: data.price,
+      description: richText,
+      quantity: data.quantity,
+      imgUrls: imageUrl,
     };
 
     console.log(info)
@@ -54,7 +54,7 @@ const AddProduct = ({ isOpen, setIsOpen }) => {
       modelName: "Products",
       body: info,
     };
-    fetch(`${url}/api/v1/custom`, {
+    fetch(`${server_url}/api/v1/custom`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

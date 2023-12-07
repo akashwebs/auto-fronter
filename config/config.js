@@ -1,1 +1,1 @@
-export const url = "http://localhost:5000"
+export const server_url = "https://agrovet-backend.vercel.app/api/v1"

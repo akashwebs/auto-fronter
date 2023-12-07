@@ -1,18 +1,61 @@
 "use client"
 
 
+import { server_url } from '@/config/config'
 import AdminLayout from '@/src/Layout/AdminLayout'
 import AddProduct from '@/src/components/admin/Product/AddProduct'
+import CustomAddButton from '@/src/shared/AutoRequiredComp/CustomButton'
+import CustomTable from '@/src/shared/AutoRequiredComp/CustomTable'
 import { Button } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Product = () => {
-    const [show,setShow] = useState(false)
+    const [show, setShow] = useState(false)
+    const [data, setData] = useState([])
+    const [reload, setReload] = useState(false)
 
-  return (
-    <AdminLayout>
-        <div>
+
+    useEffect(() => {
+
+        fetch(`${server_url}/custom?modelName=Products`)
+            .then(res => res.json())
+            .then(data => setData(data.data.result))
+    }, [reload])
+
+
+    const refeachFunction = () => {
+        setReload(!reload)
+    }
+
+
+    const tableDesign = [
+        {
+            colName: "Image",
+            colKay: "imgUrls",
+            type: "image"
+        },
+        {
+            colName: "ProductName",
+            colKay: "name"
+        },
+        {
+            colName: "Bangla Name",
+            colKay: "banglaName"
+        },
+        {
+            colName: "Quantity",
+            colKay: "quantity"
+        },
+
+        {
+            colName: "Price",
+            colKay: "price"
+        },
+    ];
+    return (
+        <AdminLayout>
             <div>
+                {/*  <div>
                 <h2 className=' text-[25px] font-medium '>Product </h2>
             </div>
             <div className=' w-full h-[500px] rounded-xl shadow-md bg-white mt-4'>
@@ -21,10 +64,15 @@ const Product = () => {
                     <button onClick={()=>setShow(true)} className=' py-2 px-5 bg-[#13aff0] text-white rounded-xl hover:bg-success duration-300'> Add Product </button>
                 </div>
             </div>
-            <AddProduct isOpen={show} setIsOpen={setShow}/>
-        </div>
-    </AdminLayout>
-  )
+            <AddProduct isOpen={show} setIsOpen={setShow}/> */}
+                <CustomAddButton title={"Add Product"} />
+                <div className='bg-white p-4'>
+                    <CustomTable title='Our Products' data={data} tableDesign={tableDesign} modelName={"Products"} refetch={refeachFunction} />
+
+                </div>
+            </div>
+        </AdminLayout>
+    )
 }
 
 export default Product

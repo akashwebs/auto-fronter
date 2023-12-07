@@ -1,6 +1,6 @@
 import swal from "sweetalert";
 
-const CustomDeleteButton = ({ title = 'Delete', id, modelName, url }) => {
+const CustomDeleteButton = ({ title = 'Delete', id, modelName, url, refetch = () => { } }) => {
 
 
     const handleFunction = () => {
