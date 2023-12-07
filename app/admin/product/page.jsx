@@ -76,3 +76,32 @@ const Product = () => {
 }
 
 export default Product
+
+/* 
+* 
+ <CustomTable title='Our Products' data={data} tableDesign={tableDesign} modelName={"Products"} refetch={refeachFunction} />
+    title=  page title
+    data= api fetch data , must be array of object 
+    
+    ----------
+    tableDesign= 
+            [
+        {
+            colName: "Image",
+            colKay: "imgUrls",
+            type: "image"
+        },
+        {
+            colName: "ProductName",
+            colKay: "name"
+        }
+
+    table design er moddhe jodi image show koranu lage tobe tobe type bolte hobe, tachara text er jonno bola lagbe na, 
+    colName holo, table hading
+    colKey api er obj theke kon field ta table er moddhe dekhate cai.
+-------------------
+    modelName={"Products"} jodi delete korte cai er jonno, jodi modelName na thake, tahole url pathate hobe.
+    jeno url pathale, ar model name pathate hobe na.
+    -----
+    refetch ekta function , amra jodi kono funciton call korte cai , after delete then refeach er moddhe patahle hobe..
+*/
