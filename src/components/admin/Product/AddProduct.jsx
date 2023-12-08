@@ -113,7 +113,6 @@ const AddProduct = ({ isOpen, setIsOpen }) => {
               </label>
               <input
                 type="text"
-                {...register("banglaName", { required: true })}
                 className=" py-3 border rounded-md focus:outline-[#eb3867] px-5 bg-white input_Shadow w-full"
                 placeholder=" Enter Name Bangla"
               />
@@ -181,7 +180,7 @@ const AddProduct = ({ isOpen, setIsOpen }) => {
                   <Image
                     src={imageUrl}
                     width="100"
-                    height="2"
+                    height="70"
                     alt="category image"
                     className="w-full h-full object-contain "
                   />
