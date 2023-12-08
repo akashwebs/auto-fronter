@@ -1,6 +1,5 @@
 import React from 'react';
 const CustomInput = ({ field, register, errors }) => {
-    console.log(field)
 
 
     return (

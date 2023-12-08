@@ -2,9 +2,12 @@
 
 import AdminLayout from '@/src/Layout/AdminLayout';
 import CustomInput from '@/src/shared/inputs/CustomInput';
+import CustomRichText from '@/src/shared/inputs/CustomRichText';
 import SingleImageUpload from '@/src/shared/inputs/SingleImageUpload';
+import dynamic from 'next/dynamic';
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
+
 
 
 const DynamicFormPage = () => {
@@ -16,6 +19,8 @@ const DynamicFormPage = () => {
         formState: { errors },
     } = useForm();
     const [imageUrl, setImageUrl] = useState()
+    const [richText, setValueOfRichText] = useState("");
+
     const formFormat = [
         {
             label: "Full Name",
@@ -27,16 +32,7 @@ const DynamicFormPage = () => {
             defaultValue: "",
             name: "fullName"
         },
-        {
-            label: "image upload",
-            type: "file",
-            placeholder: "Enter Your Phone Number",
-            required: true,
-            errorMessage: "Phone Number is required",
-            class: "border-0",
-            defaultValue: "",
-            name: "image"
-        },
+       
         {
             label: "Phone",
             type: "tel",
@@ -47,10 +43,28 @@ const DynamicFormPage = () => {
             defaultValue: "",
             name: "phoneNumber"
         },
+        {
+            label: "Description",
+            type: "textBox",
+            placeholder: "Enter Your Phone Number",
+            required: true,
+            errorMessage: "Phone Number is required",
+            class: "border-0",
+            name: "phoneNumber"
+        },
+        {
+            label: "Product Image",
+            type: "file",
+            required: true,
+            errorMessage: "Phone Number is required",
+            name: "image"
+        }
 
     ];
 
     const onSubmit = (data) => {
+        data.image = imageUrl
+        data.dis = richText
         console.log("data", data);
     };
 
@@ -63,12 +77,15 @@ const DynamicFormPage = () => {
                         {formFormat.map((field, index) => (
                             <div key={index} className="">
                                 {field.type === 'file' ? (
-                                    <SingleImageUpload {...{ imageUrl, setImageUrl }} />
-                                ) : (
+                                    <SingleImageUpload {...{ field, imageUrl, setImageUrl }} />
+                                ) : field.type === "textBox" ? <CustomRichText {...{ field, richText, setValueOfRichText }} /> : (
                                     <CustomInput {...{ field, register, errors }} />
                                 )}
+
+
                             </div>
                         ))}
+
                     </div>
                     <button type="submit">Submit</button>
                 </form>

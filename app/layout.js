@@ -3,6 +3,7 @@
 import { Roboto } from 'next/font/google'
 import './globals.css'
 import 'aos/dist/aos.css';
+import 'react-quill/dist/quill.snow.css'
 import AOS from 'aos';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -10,7 +11,7 @@ import Header from '@/src/components/header/Header';
 import Footer from '@/src/components/footer/Footer';
 
 
-const roboto = Roboto({ 
+const roboto = Roboto({
   subsets: ['latin'],
   weight: ["400", "500", "700"],
 })
@@ -42,7 +43,7 @@ export default function RootLayout({ children }) {
         {url.includes("admin") ? <></> : <Header />}
         {children}
         {url.includes("admin") ? <></> : <Footer />}
-        </body>
+      </body>
     </html>
   )
 }

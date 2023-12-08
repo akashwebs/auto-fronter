@@ -1,9 +1,8 @@
 import Image from 'next/image';
 import React, { useState } from 'react';
 
-const SingleImageUpload = ({ imageUrl, setImageUrl }) => {
+const SingleImageUpload = ({ field, imageUrl, setImageUrl }) => {
 
-    console.log('dkeekjelkjrler', imageUrl, setImageUrl)
 
 
     const imgUrl = `https://api.imgbb.com/1/upload?key=ab3e927fbb2142be370cd6e16ff2fdee`;
@@ -36,7 +35,7 @@ const SingleImageUpload = ({ imageUrl, setImageUrl }) => {
                 <span
                     class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-sm text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs"
                 >
-                    Upload Image
+                    {field?.label ? field.label : "Image Upload"}
                 </span>
             </fieldset>
                 {
