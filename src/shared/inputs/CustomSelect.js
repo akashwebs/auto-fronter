@@ -9,7 +9,7 @@ const CustomSelect = ({ options, getValueFunction, defaultValue }) => {
                 defaultValue={defaultValue}
                 onChange={getValueFunction}
                 options={options.options} />
-            {options.required ? <small className='text-red-500'>{options?.errorMessage}</small> : ""}
+            {options.required && !defaultValue && <small className='text-red-500'>{options?.errorMessage}</small>}
         </div>
     );
 };
